@@ -1,3 +1,5 @@
+import java.awt.event.KeyEvent;
+
 import javax.swing.JFrame;
 
 public class TetrisMain {
@@ -17,12 +19,16 @@ public class TetrisMain {
 		items.pieces.add(me);
 		while (true)
 		{
-			Thread.sleep(400);
+			frame.addKeyListener(keyStroke);
+			Thread.sleep(500);
 			frame.repaint();
 			for (int i=0;i<items.pieces.size();i++)
 			{
+				frame.addKeyListener(keyStroke);
 				items.pieces.get(i).fall(items.pieces.get(i).piece);
+				items.pieces.get(i).key(items.pieces.get(i).piece);
 			}
+			frame.addKeyListener(keyStroke);
 		}
 	}
 }

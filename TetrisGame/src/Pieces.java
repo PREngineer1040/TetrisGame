@@ -1,17 +1,18 @@
 import java.util.Arrays;
 
 public class Pieces {
-	boolean[][]piece;
+	int[][]piece;
 	public Pieces()
 	{
 		
 	}
-	void fall(boolean[][] piece)
+	void fall(int[][] piece)
 	{
+
 		boolean check=true;
 		for (int i=0;i<10;i++)
 		{
-			if (piece[i][21])
+			if (piece[i][21]>0)
 			{
 				check=false;
 			}
@@ -22,90 +23,91 @@ public class Pieces {
 		{
 			for (int j=21;j>=0;j--)
 			{
-				if (piece[i][j])
+				if (piece[i][j]>0)
 				{
-					piece[i][j+1]=true;
-					piece[i][j]=false;
+					piece[i][j+1]=piece[i][j];
+					piece[i][j]=0;
 				}
 			}
 		}
 		}
 	}
-	void rotate()
+	void rotate(int[][] piece)
 	{
 	
 	}
-	void moveL()
+	void moveL(int[][] piece)
 	{
 		
+		boolean check=true;
+		for (int j=0;j<22;j++)
+		{
+			if (piece[0][j]>0)
+			{
+				check=false;
+			}
+		}
+	if (check)
+	{
+		for (int i=0;i<10;i++)
+		{
+			for (int j=0;j<22;j++)
+			{
+				if (piece[i][j]>0)
+				{
+					piece[i-1][j]=piece[i][j];
+					piece[i][j]=0;
+				}
+			}
+		}
 	}
-	void moveR()
+	}
+	void moveR(int[][] piece)
 	{
-		
+		boolean check=true;
+		for (int j=0;j<22;j++)
+		{
+			if (piece[9][j]>0)
+			{
+				check=false;
+			}
+		}
+	if (check)
+	{
+		for (int i=9;i>=0;i--)
+		{
+			for (int j=21;j>=0;j--)
+			{
+				if (piece[i][j]>0)
+				{
+					piece[i+1][j]=piece[i][j];
+					piece[i][j]=0;
+				}
+			}
+		}
+	}
 	}
 	void faster()
 	{
 		
 	}
-	boolean[][] getPiece()
+	int[][] getPiece()
 	{
 		return null;
 	}
-	public void key()
+	public void key(int[][] piece)
 	{
 		if (TetrisMain.keyStroke.isSpacePressed())
 		{
-			
+			rotate(piece); 
 		}
 		if (TetrisMain.keyStroke.isLeftPressed())
 		{
-			boolean check=true;
-			for (int i=0;i<22;i++)
-			{
-				if  (piece[0][i]==true)
-				{
-					check=false;
-				}
-			}
-			if (check)
-			{
-			for (int i=0;i<10;i++)
-			{
-				for (int j=0;j<22;j++)
-				{
-					if (piece[i][j])
-					{
-						piece[i-1][j]=true;
-						piece[i][j]=false;
-					}
-				}
-			}
-			}
+			moveL(piece);
 		}
 		if (TetrisMain.keyStroke.isRightPressed())
 		{
-			boolean check=true;
-			for (int i=0;i<22;i++)
-			{
-				if  (piece[9][i]==true)
-				{
-					check=false;
-				}
-			}
-			if (check)
-			{
-			for (int i=0;i<10;i++)
-			{
-				for (int j=0;j<22;j++)
-				{
-					if (piece[i][j])
-					{
-						piece[i+1][j]=true;
-						piece[i][j]=false;
-					}
-				}
-			}
-			}
+			moveR(piece);
 		}
 		if (TetrisMain.keyStroke.isDownPressed())
 		{

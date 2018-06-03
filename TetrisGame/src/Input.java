@@ -66,12 +66,14 @@ public class Input implements KeyListener{
 		e.consume();
 	}
 
+
 	/**
 	 * Handle a key release event.
 	 */
+
 	public void keyReleased(KeyEvent e) {
 		switch(e.getKeyCode()){
-		case KeyEvent.VK_UP:
+		case KeyEvent.VK_SPACE:
 			this.spaceIsPressed = false;
 			break;
 		case KeyEvent.VK_DOWN:
@@ -87,6 +89,7 @@ public class Input implements KeyListener{
 		}
 		e.consume();
 	}
+	
 
 	public void keyTyped(KeyEvent e) {
 		// not used

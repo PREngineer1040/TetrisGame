@@ -40,13 +40,13 @@ public class Panel extends JComponent{
 		g2.setColor(Color.RED);
 		for (int i=0;i<items.pieces.size();i++)
 		{
-			boolean[][] piece;
+			int[][] piece;
 			piece=items.pieces.get(i).getPiece();
 			for (int j=0;j<10;j++)
 			{
 				for (int k=0;k<22;k++)
 				{
-					if (piece[j][k] && k>1)
+					if (piece[j][k]>0 && k>1)
 					{
 						g2.fillRect(j*cellSize+xMargins+1, k*cellSize+yMargins+1-2*cellSize, cellSize-1, cellSize-1);
 					}
