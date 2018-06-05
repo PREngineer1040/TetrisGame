@@ -5,6 +5,7 @@ import javax.swing.JFrame;
 public class TetrisMain {
 	static JFrame frame = new JFrame();
 	static Input keyStroke = new Input();
+	static Items items = new Items();
 	public static void main(String[] args) throws InterruptedException
 	{
 		
@@ -14,21 +15,27 @@ public class TetrisMain {
 		Panel c = new Panel();
 		frame.add(c); 
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		Items items = new Items();
+
 		TPiece me = new TPiece();
 		items.pieces.add(me);
 		while (true)
 		{
-			frame.addKeyListener(keyStroke);
 			Thread.sleep(500);
+
+			items.pieces.get(items.pieces.size()-1).key();
+			items.pieces.get(items.pieces.size()-1).fall();
+			items.pieces.get(items.pieces.size()-1).checkPlaced(items);
+			if (items.pieces.get(items.pieces.size()-1).isPlaced())
+			{
+				TPiece T = new TPiece();
+				items.pieces.add(T);
+			}
 			frame.repaint();
 			for (int i=0;i<items.pieces.size();i++)
 			{
-				frame.addKeyListener(keyStroke);
-				items.pieces.get(i).fall(items.pieces.get(i).piece);
-				items.pieces.get(i).key(items.pieces.get(i).piece);
+				
 			}
-			frame.addKeyListener(keyStroke);
+			
 		}
 	}
 }

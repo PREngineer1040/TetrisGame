@@ -14,15 +14,42 @@ public class TPiece extends Pieces{
 	}
 	
 	@Override
-	void rotate(int[][] piece)
+	void rotate()
+	
 	{
-
+		boolean check=true;
+		for (int j=0;j<22;j++)
+		{
+			if (piece[0][j]==2)
+			{
+				this.moveR();
+				this.rotate();
+				check=false;
+				break;
+			}
+		}
+		for (int j=0;j<22;j++)
+		{
+			if (piece[9][j]==2)
+			{
+				this.moveL();
+				this.rotate();
+				check=false;
+				break;
+			}
+		}
+		for (int i=0;i<TetrisMain.items.pieces.size();i++)
+		{
+			 
+		}
+		 if (check)
+		 {
 		 for (int i=0;i<10;i++)
 		 {
-			 for (int j =0;j<21    ;j++)
+			 for (int j =0;j<21;j++)
 			 {
 				 if (piece[i][j]==2)
-				 {
+				 { 
 					 //Aqui dentro van los else if para los otros casos
 					 if(piece[i-1][j]==1 && piece[i+1][j]==1 && piece[i][j-1]==1)
 					 {
@@ -44,24 +71,12 @@ public class TPiece extends Pieces{
 						 piece[i][j+1]=0;
 						 piece[i+1][j]=1;
 					 }
+					 
 				 }
+				 
 			 }
 		 }
+		 }
 	}
-	void moveL()
-	{
-		
-	}
-	void moveR()
-	{
-		
-	}
-	void faster()
-	{
-		
-	}
-	public int[][] getPiece()
-	{
-		return this.piece; 
-	}
+
 }

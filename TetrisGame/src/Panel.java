@@ -19,7 +19,7 @@ public class Panel extends JComponent{
 		
 
 		//Here we draw the background.
-		Color c = new Color(10,40,130);
+		Color c = new Color(10,60,100);
 		g2.setColor(c);
 		g2.fillRect(0, 0, TetrisMain.frame.getWidth(), TetrisMain.frame.getHeight());
 		
@@ -37,7 +37,8 @@ public class Panel extends JComponent{
 		}
 		
 		//Here we draw the pieces
-		g2.setColor(Color.RED);
+		Color c2 = new Color(222,20,3);
+		g2.setColor(c2);
 		for (int i=0;i<items.pieces.size();i++)
 		{
 			int[][] piece;

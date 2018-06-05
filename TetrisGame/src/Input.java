@@ -43,6 +43,22 @@ public class Input implements KeyListener{
 	public boolean isSpacePressed() {
 		return spaceIsPressed;
 	}
+	public void setLeftPressed(boolean isPressed)
+	{
+		this.leftIsPressed=isPressed;
+	}
+	public void setRightPressed(boolean isPressed)
+	{
+		this.rightIsPressed=isPressed;
+	}
+	public void setDownPressed(boolean isPressed)
+	{
+		this.downIsPressed=isPressed;
+	}
+	public void setSpacePressed(boolean isPressed)
+	{
+		this.spaceIsPressed=isPressed;
+	}
 
 	/**
 	 * Handle a key input event.
@@ -71,7 +87,9 @@ public class Input implements KeyListener{
 	 * Handle a key release event.
 	 */
 
-	public void keyReleased(KeyEvent e) {
+	public void keyReleased(KeyEvent e) {}
+	
+	/*
 		switch(e.getKeyCode()){
 		case KeyEvent.VK_SPACE:
 			this.spaceIsPressed = false;
@@ -89,6 +107,8 @@ public class Input implements KeyListener{
 		}
 		e.consume();
 	}
+	
+	*/
 	
 
 	public void keyTyped(KeyEvent e) {
