@@ -12,7 +12,7 @@ public class Items {
 		
 		
 	}
-	
+	//This method checks if the pieces make a full line, if they do it clears that line and shifts all the pieces down.
 	public Items clearLine(Items items)
 	{
 		Pieces result= new Pieces();
