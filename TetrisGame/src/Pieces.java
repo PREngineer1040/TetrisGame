@@ -1,8 +1,9 @@
 import java.util.Arrays;
 
 public class Pieces {
-	int[][]piece;
+	int[][]piece= new int[10][22];
 	boolean placed = false;
+	Items items;
 	public Pieces()
 	{
 		
@@ -55,6 +56,22 @@ public class Pieces {
 				check=false;
 			}
 		}
+		for (int k=0;k<items.pieces.size()-1;k++)
+		{   
+			Pieces piece= items.pieces.get(k);
+			for (int i=1;i<10;i++)
+			{
+				for (int j=0;j<22;j++)
+				{
+					if (piece.piece[i-1][j]>0 && this.piece[i][j]>0)
+					{
+						check=false;
+					}
+				}
+			}
+			
+		}
+		
 		
 	if (check)
 	{
@@ -88,6 +105,21 @@ public class Pieces {
 				check=false;
 			}
 		}
+		for (int k=0;k<items.pieces.size()-1;k++)
+		{   
+			Pieces piece= items.pieces.get(k);
+			for (int i=0;i<9;i++)
+			{
+				for (int j=0;j<22;j++)
+				{
+					if (piece.piece[i+1][j]>0 && this.piece[i][j]>0)
+					{
+						check=false;
+					}
+				}
+			}
+			
+		}
 	if (check)
 	{
 		for (int i=9;i>=0;i--)
@@ -108,8 +140,9 @@ public class Pieces {
 		
 	}
 
-	public void key()
+	public void key(Items items)
 	{
+		this.items=items;
 		
 		if (TetrisMain.keyStroke.isSpacePressed())
 		{
@@ -163,6 +196,8 @@ public class Pieces {
 	{
 		return this.piece; 
 	}
+	
+	
 	public boolean isPlaced()
 	{
 		return this.placed;
